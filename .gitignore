@@ -1,0 +1,14 @@
+# Jenkins data (NE JAMAIS versionner)
+**/jenkins_home/
+**/jenkins_home/**
+
+# Docker / compose runtime
+**/.docker/
+**/docker-data/
+
+# Kube / minikube local
+**/.kube/
+**/.minikube/
+
+# Logs
+*.log

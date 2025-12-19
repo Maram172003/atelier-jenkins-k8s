@@ -1,0 +1,25 @@
+services:
+  jenkins:
+    network_mode: "host"
+    container_name: jenkins
+    
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    user: root
+    privileged: true
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      # pour que Jenkins puisse lancer docker (docker-in-docker via socket)
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      # persistance Jenkins
+      - ./jenkins_home:/var/jenkins_home
+
+      # accès kubeconfig + certificats minikube de ta machine
+      - /home/maram/.kube:/home/maram/.kube
+      - /home/maram/.minikube:/home/maram/.minikube
+
+
